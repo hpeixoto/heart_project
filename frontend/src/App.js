@@ -24,7 +24,6 @@ function App() {
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value || "" });
-        console.log("Alteração no form", formData);
     };
 
     const handleSubmit = async (e) => {
@@ -38,7 +37,6 @@ function App() {
       });
 
         const data = await response.json();
-        console.log("Data do response", data);
         setResult(data.prediction);
         setRecall(data.recall ? (data.recall * 100).toFixed(2) : "N/A"); // Convert recall to percentage
         setOpen(true);
