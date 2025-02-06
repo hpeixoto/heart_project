@@ -24,14 +24,12 @@ def preprocess_input(data):
     }
 
     for key, value in data.items():
-        print(key, value)
         # Convert boolean-like values first
         if key in boolean_mappings:
             if value in boolean_mappings[key]:
                 data[key] = boolean_mappings[key][value]
             else:
                 return jsonify({"error": f"Invalid boolean value for {key}: {value}"}), 400
-
     return data
 
 
@@ -40,12 +38,10 @@ def predict():
     try:
         # Convert input data
         data = request.form.to_dict()
-        print("Input data", data)
 
         # Convert numeric values where applicable
         for k in data.keys():
             if k not in label_encoders:
-                print(k)
                 try:
                     data[k] = float(data[k])
                 except ValueError:
@@ -53,7 +49,6 @@ def predict():
 
         # Encode categorical values and process boolean values
         processed_data = preprocess_input(data)
-        print("Processed data", processed_data)
 
         # If an error JSON was returned from preprocess_input, forward it
         if isinstance(processed_data, tuple):  # This means an error message was returned
@@ -64,12 +59,8 @@ def predict():
 
         # Scale numerical features used in the model ['age', 'trestbps', 'chol', 'thalch', 'oldpeak']
         numerical_features = ['age', 'trestbps', 'chol', 'thalch', 'oldpeak']
-
-        print("numerical_features", numerical_features)
         
         df[numerical_features] = scaler.transform(df[numerical_features])
-
-        print("df", df)
 
         # Predict
         prediction = model.predict(df)
@@ -78,7 +69,6 @@ def predict():
         return jsonify({"prediction": result})
 
     except Exception as e:
-        print("ERRO 500!!!")
         return jsonify({"error": str(e)}), 500
 
 
