@@ -30,7 +30,7 @@ function App() {
         e.preventDefault();
         const formDataFormatted = new URLSearchParams(formData);
 
-        const response = await fetch("http://127.0.0.1:5000/predict", {  // Use 127.0.0.1 instead of "localhost"
+        const response = await fetch("http://127.0.0.1:5000/predict", { 
           method: "POST",
           body: new URLSearchParams(formData),
           headers: { "Content-Type": "application/x-www-form-urlencoded" }
@@ -38,7 +38,6 @@ function App() {
 
         const data = await response.json();
         setResult(data.prediction);
-        setRecall(data.recall ? (data.recall * 100).toFixed(2) : "N/A"); // Convert recall to percentage
         setOpen(true);
     };
 
