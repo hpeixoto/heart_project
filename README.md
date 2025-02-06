@@ -1,10 +1,14 @@
 ## Clone repository
 
+$ git clone https://github.com/hpeixoto/heart_project.git
+$ cd heart_project
 
 ## Install Modules Node (frontend)
 
+$ cd frontend
 $ npm i
+$ npm start
 
-## Install dependecies python
+## Open new terminal
 
-$ pip install
+$ python3 app.py
