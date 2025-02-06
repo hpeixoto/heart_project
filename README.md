@@ -1,6 +1,7 @@
 ## Clone repository
 
 $ git clone https://github.com/hpeixoto/heart_project.git
+
 $ cd heart_project
 
 ## Install Modules Node (frontend)
