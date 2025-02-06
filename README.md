@@ -32,6 +32,12 @@ $ npm start
 ```
 
 ## Open new terminal
+### Train Model and export all the metadata to inference execution:
+```
+$ python3 train_model.py
+```
+
+### Serve API to run inferences and return a result
 ```
 $ python3 app.py
 ```
