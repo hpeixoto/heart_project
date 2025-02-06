@@ -41,7 +41,6 @@ for column in categorical_features:
 
 # Scale numerical features
 scaler = StandardScaler()
-print(numerical_features)
 heart_data[numerical_features] = scaler.fit_transform(heart_data[numerical_features])
 
 # Define features and target
